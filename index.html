@@ -227,7 +227,12 @@
 </code></pre><p>子模板的view层demo:<br>    可以看到从后端传来一个tpllist的数据字段，相当于是一个数组，我们把它循环输出出来，同时一会异步刷新的时候我们也只是刷新这个子模板的数据，而不会改变上面的母模板的数据。</p>
 <pre><code><span class="xml"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"cont-wrap"</span>&gt;</span>
     <span class="tag">&lt;<span class="title">ul</span>&gt;</span>
-        </span><span class="vbscript">&lt;%tpllist.forEach(<span class="keyword">function</span>(item)&lt;!--￼<span class="number">0</span>--&gt;)%&gt;</span><span class="xml">
+        </span><span class="vbscript">&lt;%tpllist.forEach(<span class="keyword">function</span>(item){ %&gt;</span><span class="xml">
+            <span class="tag">&lt;<span class="title">li</span>&gt;</span>
+                <span class="tag">&lt;<span class="title">p</span>&gt;</span></span><span class="vbscript">&lt;%=item.desc%&gt;</span><span class="xml"><span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+                <span class="tag">&lt;<span class="title">p</span>&gt;</span></span><span class="vbscript">&lt;%=item.name%&gt;</span><span class="xml"><span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+            <span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+        </span><span class="vbscript">&lt;%})%&gt;</span><span class="xml">
     <span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
 <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span>
 </code></pre><p>Controller层的处理:</p>
