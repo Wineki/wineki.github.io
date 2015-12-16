@@ -3,17 +3,84 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Wineki Blog</title>
+  <title>Thinkjs实现异步加载 | Wineki Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Wineki Blog">
-<meta property="og:url" content="http://imwineki.cn/index.html">
+  <meta name="description" content="今天来总结一下关于使用Thinkjs来实现页面异步加载的原理和做法。我从前端讲起，首先流程中包含一下几部分：
+
+
+
+View
+Controller
+Model
+
+
+
+
+筛选框（filter）用于筛选内容，位置在母模版
+母模版对应的Action
+调用数据库
+
+
+异步加载内容（content），位置在子模板
+ajax判断后的处理
+调用数据库
+
+
+
+下面根据代码具体解释一下：母模版的view层demo：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Thinkjs实现异步加载">
+<meta property="og:url" content="http://imwineki.cn/2015/12/14/Thinkjs实现异步加载模板方法/index.html">
 <meta property="og:site_name" content="Wineki Blog">
-<meta property="og:description">
+<meta property="og:description" content="今天来总结一下关于使用Thinkjs来实现页面异步加载的原理和做法。我从前端讲起，首先流程中包含一下几部分：
+
+
+
+View
+Controller
+Model
+
+
+
+
+筛选框（filter）用于筛选内容，位置在母模版
+母模版对应的Action
+调用数据库
+
+
+异步加载内容（content），位置在子模板
+ajax判断后的处理
+调用数据库
+
+
+
+下面根据代码具体解释一下：母模版的view层demo：">
+<meta property="og:updated_time" content="2015-12-16T16:04:08.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Wineki Blog">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Thinkjs实现异步加载">
+<meta name="twitter:description" content="今天来总结一下关于使用Thinkjs来实现页面异步加载的原理和做法。我从前端讲起，首先流程中包含一下几部分：
+
+
+
+View
+Controller
+Model
+
+
+
+
+筛选框（filter）用于筛选内容，位置在母模版
+母模版对应的Action
+调用数据库
+
+
+异步加载内容（content），位置在子模板
+ajax判断后的处理
+调用数据库
+
+
+
+下面根据代码具体解释一下：母模版的view层demo：">
   
     <link rel="alternative" href="/atom.xml" title="Wineki Blog" type="application/atom+xml">
   
@@ -157,9 +224,7 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-Thinkjs实现异步加载模板方法" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Thinkjs实现异步加载模板方法" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2015/12/14/Thinkjs实现异步加载模板方法/" class="article-date">
@@ -175,12 +240,19 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/14/Thinkjs实现异步加载模板方法/">Thinkjs实现异步加载</a>
+    <h1 class="article-title" itemprop="name">
+      Thinkjs实现异步加载
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -346,188 +418,62 @@
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/11/25/css选择器优先级权重分析/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">css选择器优先级权重分析</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
   
 </article>
 
 
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Thinkjs实现异步加载模板方法" data-title="Thinkjs实现异步加载" data-url="http://imwineki.cn/2015/12/14/Thinkjs实现异步加载模板方法/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
 
 
 
-
-  
-    <article id="post-css选择器优先级权重分析" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/11/25/css选择器优先级权重分析/" class="article-date">
-  	<time datetime="2015-11-25T15:25:41.000Z" itemprop="datePublished">2015-11-25</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/25/css选择器优先级权重分析/">css选择器优先级权重分析</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近写项目发现了css的一些小问题总结出来，主要是关于css选择器权重相关的。<br>在浏览器中，我们在编写页面样式的时候通常都要考虑选择器的优先级，使得页面的样式不会被覆盖或覆盖其他样式。<br>总体来说优先级是这样的（此处从高到底排序）：</p>
-<blockquote>
-<p>!important  -&gt;   行内样式style(此处包含写在html结构中的和用js动态加载上去的style)  -&gt;  id选择器  -&gt;  伪类  -&gt;  class选择器  -&gt;  元素选择器  -&gt;  通用选择器( * )</p>
-</blockquote>
-<p>这里我来对一些细节说明一下：<br>1.页面中能不要使用！important尽量避免使用，因为从严格意义上讲，！important与优先级是没有关系的，当使用!important定义模块的时候页面中再对其进行任何操作都无济于事了，改变了样式表本来的级联规则，难以调试。<br>2.行内样式这里的两方面距离说明：</p>
-<pre><code><span class="number">1</span>.&lt;<span class="tag">p</span> style=<span class="string">"color:red"</span> id=<span class="string">"test"</span>&gt;&lt;/p&gt;
-
-<span class="number">2</span>. document.<span class="function"><span class="title">getElementById</span><span class="params">(<span class="string">'topnav'</span>)</span></span><span class="class">.style</span><span class="class">.color</span> = <span class="string">'red'</span>
-</code></pre><p>3.关于伪类的优先级遵循：LVHA,从右向左优先级逐级增加.然而not作为伪类，却并不列入伪类优先级的评比中，也就是说当元素有重新定义的样式的时候not会被自动覆盖。举例说明：</p>
-<pre><code>&lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"test-not"</span>&gt;测试伪类<span class="keyword">not</span>&lt;/<span class="keyword">div</span>&gt;
-&lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"not"</span>&gt;<span class="number">123</span>&lt;/<span class="keyword">div</span>&gt;
-</code></pre><p>当定义样式为：</p>
-<pre><code><span class="rule"><span class="attribute">.test-not</span>:<span class="value"><span class="function">not</span>(.not){
-    color:red</span></span>;
-}
-</code></pre><p>效果如下图：<br><img src="./img/1.png" alt=""><br>123为黑色，说明样式中not生效了。<br>当定义样式为：</p>
-<pre><code><span class="class">.not</span><span class="rules">{
-    <span class="rule"><span class="attribute">color</span>:<span class="value">red</span></span>;
-}</span>
-<span class="rule"><span class="attribute">.test-not</span>:<span class="value"><span class="function">not</span>(.not){
-    color:red</span></span>;
-}
-</code></pre><p>效果如下图：<br><img src="./img/2.png" alt=""><br>123显示为红色，说明not样式被元素本身定义的样式覆盖了。<br>4.关于a标签的说明：</p>
-<pre><code>a:link{
-    <span class="built_in">color</span>:<span class="built_in">green</span>;
-}
-<span class="comment">/*a:visited{
-    color:yellow;
-}*/</span>
-.test{
-    <span class="built_in">color</span>:<span class="built_in">red</span>;
-}
-&lt;a href=<span class="string">"/"</span> class=<span class="string">"test-relative"</span>&gt;相对目录&lt;/a&gt;
-</code></pre><p>当我们把a标签加上link伪类的时候，link的优先级就高于class=”test”,所以在首次载入页面的时候文字会显示绿色，当我们点击链接后，发现文字又变回了红色，这是因为链接点击后的状态为visited，而在样式中我们将visited的样式定义注释掉了，所以链接样式就会直接显示class=”test”的样式了。<br>当我们将visited的样式定义去掉后，会发现颜色显示为黄色。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-Thinkjs链式结构总结" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/11/25/Thinkjs链式结构总结/" class="article-date">
-  	<time datetime="2015-11-25T15:12:59.000Z" itemprop="datePublished">2015-11-25</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/25/Thinkjs链式结构总结/">Thinkjs链式结构总结</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>第一篇博文，由于刚开始学习markdown的方式写博文，速度好慢。<br><br>最近在用<em>Thinkjs</em>写项目，又向从前端到全段的梦想迈进了一步，哈哈，写话少说，share一些干货粗来。<br><br><em>Thinkjs</em>是基于nodejs的web框架，具体的文档可以参看<a href="https://thinkjs.org/" target="_blank" rel="external">https://thinkjs.org/</a>官方文档，我使用的是1.0版本，所以暂时只讨论1.0的一些情况。<br>今天写项目中遇到这样一个问题：<br>我从session中获取到用户的信息，然后获取存在session中的userName，使用：</p>
-<pre><code><span class="keyword">this</span>.session(<span class="string">"userInfo"</span>).then(<span class="function"><span class="keyword">function</span><span class="params">(data)</span></span>{
-...
-});
-</code></pre><p>的方式，另一方面我通过数据库查询获取到用户在数据库中存储的userName,然后比较这两个userName时候否相同，使用</p>
-<pre><code><span class="tag">D</span>(<span class="string">'User'</span>)<span class="class">.get</span>(id)<span class="class">.then</span>(<span class="function">function</span>(data){
-...
-}); 
-</code></pre><p>再将一个标签值assign到view层对应的页面。<br>然而就在编写的过程中我发现我在比较之后，无法将标签值传入页面。<br>具体代码如图：<br><img src="http://p6.qhimg.com/d/inn/f451a883/code.png" alt="1"><br>这是一份伪代码，上面的图片的大概意思就是这样的：</p>
-<pre><code><span class="keyword">return</span> D(<span class="string">'User'</span>).get(id).then(<span class="function"><span class="keyword">function</span><span class="params">(data)</span></span>{
-    <span class="keyword">return</span> <span class="keyword">self</span>.session(<span class="string">'user'</span>).then(<span class="function"><span class="keyword">function</span><span class="params">(user)</span></span>{
-        <span class="comment">//验证session信息,返回editable</span>
-        <span class="keyword">self</span>.assign(<span class="string">'editable'</span>,editable);
-        <span class="keyword">self</span>.assign(<span class="string">'user'</span>,data);
-        <span class="keyword">self</span>.display();
-    });
-});
-</code></pre><p>最初我是这么写的：</p>
-<pre><code><span class="keyword">return</span> D(<span class="string">'User'</span>).get(id).then(<span class="function"><span class="keyword">function</span><span class="params">(data)</span></span>{
-    <span class="keyword">var</span> session = <span class="keyword">self</span>.session(<span class="string">'user'</span>).then(<span class="function"><span class="keyword">function</span><span class="params">(user)</span></span>{
-        <span class="comment">//验证session信息,返回editable</span>
-        <span class="keyword">self</span>.assign(<span class="string">'editable'</span>,editable);
-    });
-    <span class="keyword">self</span>.assign(<span class="string">'user'</span>,data);
-    <span class="keyword">self</span>.display();
-});
-</code></pre><p>然后我发现这个根本没有想下执行，页面直接白屏了，原因其实是这样的，在<em>thinkjs</em>中绝大多数方法都是异步调用的，并且包装成promise，而promise是通过<br><em>try{}catch{}</em>进行异常捕获的，很显然我没有catch异常所以导致直接白屏，同时由于thinkjs中许多的调用都是异步调用（这个之前说过），也就是说在session还没有返回值的时候程序就向下执行了，但是此处我必须要它同步来执行，也就是说按照程序写的先后顺序来执行，所以就采用return的方法，将没有个异步方法串联起来，形成一个调用链就搞定了。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-  
 </div>
       <footer id="footer">
   <div class="outer">
@@ -551,8 +497,8 @@
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
