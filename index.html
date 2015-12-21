@@ -235,6 +235,22 @@
         </span><span class="vbscript">&lt;%})%&gt;</span><span class="xml">
     <span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
 <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span>
+</code></pre><p>当然这里需要js来帮忙使用ajax来进行一步调用:</p>
+<pre><code>$(<span class="string">'a'</span>).on(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>{
+    e.preventDefault();
+    $.ajax({
+        url:<span class="string">''</span>,<span class="comment">/*填写请求路径*/</span>
+        dataTpe:<span class="string">'jsonp'</span>,
+        data:<span class="string">''</span>,<span class="comment">/*传送的数据*/</span>
+        success:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+
+        },
+        fail:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+
+        }
+
+    });
+});
 </code></pre><p>Controller层的处理:</p>
 <pre><code>tplselectAction: <span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
     <span class="keyword">var</span> <span class="keyword">self</span> = this;
@@ -346,7 +362,7 @@
         }
 
     }
-</code></pre><p>关于Thinkjs里面的具体语法我就不一一解释了，感兴趣的同学可以搜一下API，sql语句写的不好，还望大家见谅~~哈哈哈，先就这么多~</p>
+</code></pre><p>关于Thinkjs里面的具体语法我就不一一解释了，这里主要来讲一下大概的思路，首先前端需要在模板中将需要异步加载的模板进行include,方便后续的异步刷洗页面，同时你需要用js来进行一个ajax的通信，接着就是Controller层对模板的渲染，在拿到前端传来的请求数据后，调用model层的方法从数据库中取出数据，此时需要使用feteh这个方法重新渲染页面。（其实也可以使用display(渲染模板路径)这个方法，只是渲染的方式不用而已，结果是一样的）感兴趣的同学可以搜一下API。<br>sql语句写的不好，还望大家见谅~~哈哈哈，先就这么多~</p>
 
       
     </div>
