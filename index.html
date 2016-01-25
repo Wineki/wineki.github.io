@@ -101,7 +101,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						
+						<a href="/tags/HTTP-web传输/" style="font-size: 10px;">HTTP web传输</a>
 					</div>
 				</section>
 				
@@ -158,6 +158,61 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-HTTP解读（一）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/25/HTTP解读（一）/" class="article-date">
+  	<time datetime="2016-01-25T15:00:38.000Z" itemprop="datePublished">2016-01-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/25/HTTP解读（一）/">HTTP解读（一）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近一直在学习HTTP相关知识，学到的知识总是要总结一下嘛，分几篇文章总结粗来~<br>这篇主要内容关于Web基础相关的，知识点都比较浅显易懂，恩，闲话就说到这里。<br>HTTP是因特网的传输媒介，是应用层协议，它把联网细节都交给了通用可靠的因特网传输协议：TCP/IP。大概的关系如图:<img src="/img/http2.png" alt="">当客户端与服务器沟通的时候就需要HTTP作为信使来传递消息，通常情况下，客户端会给服务器发送一条HTTP请求，请求需要的文档，服务器收到请求后经过处理就会给客户端做出一个响应，告诉客户端处理结果。当然这里我们说的客户端其实就是我们熟悉的浏览器。举个栗子🌰，当你在浏览器里输入<a href="http://imwineki.cn/index.html">http://imwineki.cn/index.html</a>,然后按下回车键后，简单来说，就会发生以下这一些列的事情，如图，<br><img src="/img/http1.png" alt="">浏览器就会向服务器www.imwineki.cn发送一条HTTP请求，此时服务器收到请求后，就会去寻找index.html的文档，找到了的话就会返回给浏览器文档信息。以及一个200的状态码，如果失败的话就会根据具体的错误情况返回具体的错误状态。<br>稍微复杂一点来说，当你按下回车后，http会解析URL的语法，通常包含：以下几种：<br><img src="/img/http3.png" alt="">，获取到<http:imwineki.cn index.html="">使用的是http协议，同过DNS查询主机，获取到该域名下对应的服务器的IP地址，以及端口号（默认情况下是80端口），获取到服务器的IP地址后，此时如果我土豪的买了CDN服务的话，接下来代理就会将请求发送给缓存（CDN），缓存根据文件副本的新鲜度来决定返回客户端数据还是向原始服务器发出请求,如果代理需要向服务器发请求，则CDN充当客户端的角色会向服务器发送请求（具体请求头部等这里先不介绍），当请求到达服务器后，则首先到达反向代理服务器，如果反向代理中包含文件副本则直接返回，否则反向代理再次向服务器或服务器集群转发请求，如图<img src="/img/http4.png" alt="">。当然我说的这些流程都是小型网站，至于大型网站架构，中间还要包含LVS负载均衡，虚拟IP等加速工具。这里需要说明的一点：反向代理和CDN都属于缓存，都是为了减少服务器压力，降低用户等待时间，加速网站相应的，所不同的是：CDN部署在网络提供商的机房，在用户发出请求后，可以优先从距离最近的网络提供商机房获取数据，但反向代理则是部署在中心机房，当请求到来时，会优先走反向代理。</http:imwineki.cn></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP-web传输/">HTTP web传输</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-Thinkjs实现异步加载模板方法" class="article article-type-post" itemscope itemprop="blogPost">
   

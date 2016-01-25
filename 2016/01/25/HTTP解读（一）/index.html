@@ -3,19 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Thinkjs链式结构总结 | Wineki Blog</title>
+  <title>HTTP解读（一） | Wineki Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="第一篇博文，由于刚开始学习markdown的方式写博文，速度好慢。最近在用Thinkjs写项目，又向从前端到全段的梦想迈进了一步，哈哈，写话少说，share一些干货粗来。Thinkjs是基于nodejs的web框架，具体的文档可以参看https://thinkjs.org/官方文档，我使用的是1.0版本，所以暂时只讨论1.0的一些情况。今天写项目中遇到这样一个问题：我从session中获取到用户的">
+  <meta name="description" content="最近一直在学习HTTP相关知识，学到的知识总是要总结一下嘛，分几篇文章总结粗来~这篇主要内容关于Web基础相关的，知识点都比较浅显易懂，恩，闲话就说到这里。HTTP是因特网的传输媒介，是应用层协议，它把联网细节都交给了通用可靠的因特网传输协议：TCP/IP。大概的关系如图:当客户端与服务器沟通的时候就需要HTTP作为信使来传递消息，通常情况下，客户端会给服务器发送一条HTTP请求，请求需要的文档，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Thinkjs链式结构总结">
-<meta property="og:url" content="http://imwineki.cn/2015/11/25/Thinkjs链式结构总结/index.html">
+<meta property="og:title" content="HTTP解读（一）">
+<meta property="og:url" content="http://imwineki.cn/2016/01/25/HTTP解读（一）/index.html">
 <meta property="og:site_name" content="Wineki Blog">
-<meta property="og:description" content="第一篇博文，由于刚开始学习markdown的方式写博文，速度好慢。最近在用Thinkjs写项目，又向从前端到全段的梦想迈进了一步，哈哈，写话少说，share一些干货粗来。Thinkjs是基于nodejs的web框架，具体的文档可以参看https://thinkjs.org/官方文档，我使用的是1.0版本，所以暂时只讨论1.0的一些情况。今天写项目中遇到这样一个问题：我从session中获取到用户的">
-<meta property="og:image" content="http://p6.qhimg.com/d/inn/f451a883/code.png">
-<meta property="og:updated_time" content="2015-11-25T15:18:20.000Z">
+<meta property="og:description" content="最近一直在学习HTTP相关知识，学到的知识总是要总结一下嘛，分几篇文章总结粗来~这篇主要内容关于Web基础相关的，知识点都比较浅显易懂，恩，闲话就说到这里。HTTP是因特网的传输媒介，是应用层协议，它把联网细节都交给了通用可靠的因特网传输协议：TCP/IP。大概的关系如图:当客户端与服务器沟通的时候就需要HTTP作为信使来传递消息，通常情况下，客户端会给服务器发送一条HTTP请求，请求需要的文档，">
+<meta property="og:image" content="http://imwineki.cn/img/http2.png">
+<meta property="og:image" content="http://imwineki.cn/img/http1.png">
+<meta property="og:image" content="http://imwineki.cn/img/http3.png">
+<meta property="og:image" content="http://imwineki.cn/img/http4.png">
+<meta property="og:updated_time" content="2016-01-25T16:11:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Thinkjs链式结构总结">
-<meta name="twitter:description" content="第一篇博文，由于刚开始学习markdown的方式写博文，速度好慢。最近在用Thinkjs写项目，又向从前端到全段的梦想迈进了一步，哈哈，写话少说，share一些干货粗来。Thinkjs是基于nodejs的web框架，具体的文档可以参看https://thinkjs.org/官方文档，我使用的是1.0版本，所以暂时只讨论1.0的一些情况。今天写项目中遇到这样一个问题：我从session中获取到用户的">
+<meta name="twitter:title" content="HTTP解读（一）">
+<meta name="twitter:description" content="最近一直在学习HTTP相关知识，学到的知识总是要总结一下嘛，分几篇文章总结粗来~这篇主要内容关于Web基础相关的，知识点都比较浅显易懂，恩，闲话就说到这里。HTTP是因特网的传输媒介，是应用层协议，它把联网细节都交给了通用可靠的因特网传输协议：TCP/IP。大概的关系如图:当客户端与服务器沟通的时候就需要HTTP作为信使来传递消息，通常情况下，客户端会给服务器发送一条HTTP请求，请求需要的文档，">
   
     <link rel="alternative" href="/atom.xml" title="Wineki Blog" type="application/atom+xml">
   
@@ -159,11 +162,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-Thinkjs链式结构总结" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-HTTP解读（一）" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/11/25/Thinkjs链式结构总结/" class="article-date">
-  	<time datetime="2015-11-25T15:12:59.000Z" itemprop="datePublished">2015-11-25</time>
+      <a href="/2016/01/25/HTTP解读（一）/" class="article-date">
+  	<time datetime="2016-01-25T15:00:38.000Z" itemprop="datePublished">2016-01-25</time>
 </a>
     </div>
   
@@ -176,7 +179,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Thinkjs链式结构总结
+      HTTP解读（一）
     </h1>
   
 
@@ -184,6 +187,10 @@
       
       <div class="article-info article-info-post">
         
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP-web传输/">HTTP web传输</a></li></ul>
+	</div>
+
         
 
         <div class="clearfix"></div>
@@ -192,33 +199,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>第一篇博文，由于刚开始学习markdown的方式写博文，速度好慢。<br><br>最近在用<em>Thinkjs</em>写项目，又向从前端到全段的梦想迈进了一步，哈哈，写话少说，share一些干货粗来。<br><br><em>Thinkjs</em>是基于nodejs的web框架，具体的文档可以参看<a href="https://thinkjs.org/" target="_blank" rel="external">https://thinkjs.org/</a>官方文档，我使用的是1.0版本，所以暂时只讨论1.0的一些情况。<br>今天写项目中遇到这样一个问题：<br>我从session中获取到用户的信息，然后获取存在session中的userName，使用：</p>
-<pre><code><span class="keyword">this</span>.session(<span class="string">"userInfo"</span>).then(<span class="function"><span class="keyword">function</span><span class="params">(data)</span></span>{
-...
-});
-</code></pre><p>的方式，另一方面我通过数据库查询获取到用户在数据库中存储的userName,然后比较这两个userName时候否相同，使用</p>
-<pre><code><span class="tag">D</span>(<span class="string">'User'</span>)<span class="class">.get</span>(id)<span class="class">.then</span>(<span class="function">function</span>(data){
-...
-}); 
-</code></pre><p>再将一个标签值assign到view层对应的页面。<br>然而就在编写的过程中我发现我在比较之后，无法将标签值传入页面。<br>具体代码如图：<br><img src="http://p6.qhimg.com/d/inn/f451a883/code.png" alt="1"><br>这是一份伪代码，上面的图片的大概意思就是这样的：</p>
-<pre><code><span class="keyword">return</span> D(<span class="string">'User'</span>).get(id).then(<span class="function"><span class="keyword">function</span><span class="params">(data)</span></span>{
-    <span class="keyword">return</span> <span class="keyword">self</span>.session(<span class="string">'user'</span>).then(<span class="function"><span class="keyword">function</span><span class="params">(user)</span></span>{
-        <span class="comment">//验证session信息,返回editable</span>
-        <span class="keyword">self</span>.assign(<span class="string">'editable'</span>,editable);
-        <span class="keyword">self</span>.assign(<span class="string">'user'</span>,data);
-        <span class="keyword">self</span>.display();
-    });
-});
-</code></pre><p>最初我是这么写的：</p>
-<pre><code><span class="keyword">return</span> D(<span class="string">'User'</span>).get(id).then(<span class="function"><span class="keyword">function</span><span class="params">(data)</span></span>{
-    <span class="keyword">var</span> session = <span class="keyword">self</span>.session(<span class="string">'user'</span>).then(<span class="function"><span class="keyword">function</span><span class="params">(user)</span></span>{
-        <span class="comment">//验证session信息,返回editable</span>
-        <span class="keyword">self</span>.assign(<span class="string">'editable'</span>,editable);
-    });
-    <span class="keyword">self</span>.assign(<span class="string">'user'</span>,data);
-    <span class="keyword">self</span>.display();
-});
-</code></pre><p>然后我发现这个根本没有想下执行，页面直接白屏了，原因其实是这样的，在<em>thinkjs</em>中绝大多数方法都是异步调用的，并且包装成promise，而promise是通过<br><em>try{}catch{}</em>进行异常捕获的，很显然我没有catch异常所以导致直接白屏，同时由于thinkjs中许多的调用都是异步调用（这个之前说过），也就是说在session还没有返回值的时候程序就向下执行了，但是此处我必须要它同步来执行，也就是说按照程序写的先后顺序来执行，所以就采用return的方法，将没有个异步方法串联起来，形成一个调用链就搞定了。</p>
+        <p>最近一直在学习HTTP相关知识，学到的知识总是要总结一下嘛，分几篇文章总结粗来~<br>这篇主要内容关于Web基础相关的，知识点都比较浅显易懂，恩，闲话就说到这里。<br>HTTP是因特网的传输媒介，是应用层协议，它把联网细节都交给了通用可靠的因特网传输协议：TCP/IP。大概的关系如图:<img src="/img/http2.png" alt="">当客户端与服务器沟通的时候就需要HTTP作为信使来传递消息，通常情况下，客户端会给服务器发送一条HTTP请求，请求需要的文档，服务器收到请求后经过处理就会给客户端做出一个响应，告诉客户端处理结果。当然这里我们说的客户端其实就是我们熟悉的浏览器。举个栗子🌰，当你在浏览器里输入<a href="http://imwineki.cn/index.html">http://imwineki.cn/index.html</a>,然后按下回车键后，简单来说，就会发生以下这一些列的事情，如图，<br><img src="/img/http1.png" alt="">浏览器就会向服务器www.imwineki.cn发送一条HTTP请求，此时服务器收到请求后，就会去寻找index.html的文档，找到了的话就会返回给浏览器文档信息。以及一个200的状态码，如果失败的话就会根据具体的错误情况返回具体的错误状态。<br>稍微复杂一点来说，当你按下回车后，http会解析URL的语法，通常包含：以下几种：<br><img src="/img/http3.png" alt="">，获取到<http:imwineki.cn index.html="">使用的是http协议，同过DNS查询主机，获取到该域名下对应的服务器的IP地址，以及端口号（默认情况下是80端口），获取到服务器的IP地址后，此时如果我土豪的买了CDN服务的话，接下来代理就会将请求发送给缓存（CDN），缓存根据文件副本的新鲜度来决定返回客户端数据还是向原始服务器发出请求,如果代理需要向服务器发请求，则CDN充当客户端的角色会向服务器发送请求（具体请求头部等这里先不介绍），当请求到达服务器后，则首先到达反向代理服务器，如果反向代理中包含文件副本则直接返回，否则反向代理再次向服务器或服务器集群转发请求，如图<img src="/img/http4.png" alt="">。当然我说的这些流程都是小型网站，至于大型网站架构，中间还要包含LVS负载均衡，虚拟IP等加速工具。这里需要说明的一点：反向代理和CDN都属于缓存，都是为了减少服务器压力，降低用户等待时间，加速网站相应的，所不同的是：CDN部署在网络提供商的机房，在用户发出请求后，可以优先从距离最近的网络提供商机房获取数据，但反向代理则是部署在中心机房，当请求到来时，会优先走反向代理。</http:imwineki.cn></p>
 
       
     </div>
@@ -228,15 +209,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/11/25/css选择器优先级权重分析/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          css选择器优先级权重分析
-        
-      </div>
-    </a>
   
+    <a href="/2015/12/14/Thinkjs实现异步加载模板方法/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Thinkjs实现异步加载</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
   
 </nav>
 
@@ -263,7 +240,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Thinkjs链式结构总结" data-title="Thinkjs链式结构总结" data-url="http://imwineki.cn/2015/11/25/Thinkjs链式结构总结/"></div>
+	<div class="ds-thread" data-thread-key="HTTP解读（一）" data-title="HTTP解读（一）" data-url="http://imwineki.cn/2016/01/25/HTTP解读（一）/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
