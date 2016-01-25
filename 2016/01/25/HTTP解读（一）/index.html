@@ -3,26 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>css选择器优先级权重分析 | Wineki Blog</title>
+  <title>HTTP解读（一） | Wineki Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近写项目发现了css的一些小问题总结出来，主要是关于css选择器权重相关的。在浏览器中，我们在编写页面样式的时候通常都要考虑选择器的优先级，使得页面的样式不会被覆盖或覆盖其他样式。总体来说优先级是这样的（此处从高到底排序）：
-
-!important  -&amp;gt;   行内样式style(此处包含写在html结构中的和用js动态加载上去的style)  -&amp;gt;  id选择器  -&amp;gt;  伪">
+  <meta name="description" content="最近一直在学习HTTP相关知识，学到的知识总是要总结一下嘛，分几篇文章总结粗来~这篇主要内容关于Web基础相关的，知识点都比较浅显易懂，恩，闲话就说到这里。HTTP是因特网的传输媒介，是应用层协议，它把联网细节都交给了通用可靠的因特网传输协议：TCP/IP。大概的关系如图:当客户端与服务器沟通的时候就需要HTTP作为信使来传递消息，通常情况下，客户端会给服务器发送一条HTTP请求，请求需要的文档，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="css选择器优先级权重分析">
-<meta property="og:url" content="http://imwineki.cn/2015/11/25/css选择器优先级权重分析/index.html">
+<meta property="og:title" content="HTTP解读（一）">
+<meta property="og:url" content="http://imwineki.cn/2016/01/25/HTTP解读（一）/index.html">
 <meta property="og:site_name" content="Wineki Blog">
-<meta property="og:description" content="最近写项目发现了css的一些小问题总结出来，主要是关于css选择器权重相关的。在浏览器中，我们在编写页面样式的时候通常都要考虑选择器的优先级，使得页面的样式不会被覆盖或覆盖其他样式。总体来说优先级是这样的（此处从高到底排序）：
-
-!important  -&amp;gt;   行内样式style(此处包含写在html结构中的和用js动态加载上去的style)  -&amp;gt;  id选择器  -&amp;gt;  伪">
-<meta property="og:image" content="http://imwineki.cn/img/1.png">
-<meta property="og:image" content="http://imwineki.cn/img/2.png">
-<meta property="og:updated_time" content="2016-01-25T15:03:39.000Z">
+<meta property="og:description" content="最近一直在学习HTTP相关知识，学到的知识总是要总结一下嘛，分几篇文章总结粗来~这篇主要内容关于Web基础相关的，知识点都比较浅显易懂，恩，闲话就说到这里。HTTP是因特网的传输媒介，是应用层协议，它把联网细节都交给了通用可靠的因特网传输协议：TCP/IP。大概的关系如图:当客户端与服务器沟通的时候就需要HTTP作为信使来传递消息，通常情况下，客户端会给服务器发送一条HTTP请求，请求需要的文档，">
+<meta property="og:image" content="http://imwineki.cn/img/http2.png">
+<meta property="og:image" content="http://imwineki.cn/img/http1.png">
+<meta property="og:image" content="http://imwineki.cn/img/http3.png">
+<meta property="og:image" content="http://imwineki.cn/img/http4.png">
+<meta property="og:updated_time" content="2016-01-25T16:05:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="css选择器优先级权重分析">
-<meta name="twitter:description" content="最近写项目发现了css的一些小问题总结出来，主要是关于css选择器权重相关的。在浏览器中，我们在编写页面样式的时候通常都要考虑选择器的优先级，使得页面的样式不会被覆盖或覆盖其他样式。总体来说优先级是这样的（此处从高到底排序）：
-
-!important  -&amp;gt;   行内样式style(此处包含写在html结构中的和用js动态加载上去的style)  -&amp;gt;  id选择器  -&amp;gt;  伪">
+<meta name="twitter:title" content="HTTP解读（一）">
+<meta name="twitter:description" content="最近一直在学习HTTP相关知识，学到的知识总是要总结一下嘛，分几篇文章总结粗来~这篇主要内容关于Web基础相关的，知识点都比较浅显易懂，恩，闲话就说到这里。HTTP是因特网的传输媒介，是应用层协议，它把联网细节都交给了通用可靠的因特网传输协议：TCP/IP。大概的关系如图:当客户端与服务器沟通的时候就需要HTTP作为信使来传递消息，通常情况下，客户端会给服务器发送一条HTTP请求，请求需要的文档，">
   
     <link rel="alternative" href="/atom.xml" title="Wineki Blog" type="application/atom+xml">
   
@@ -166,11 +162,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-css选择器优先级权重分析" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-HTTP解读（一）" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/11/25/css选择器优先级权重分析/" class="article-date">
-  	<time datetime="2015-11-25T15:25:41.000Z" itemprop="datePublished">2015-11-25</time>
+      <a href="/2016/01/25/HTTP解读（一）/" class="article-date">
+  	<time datetime="2016-01-25T15:00:38.000Z" itemprop="datePublished">2016-01-25</time>
 </a>
     </div>
   
@@ -183,7 +179,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      css选择器优先级权重分析
+      HTTP解读（一）
     </h1>
   
 
@@ -191,6 +187,10 @@
       
       <div class="article-info article-info-post">
         
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP-web传输/">HTTP web传输</a></li></ul>
+	</div>
+
         
 
         <div class="clearfix"></div>
@@ -199,40 +199,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近写项目发现了css的一些小问题总结出来，主要是关于css选择器权重相关的。<br>在浏览器中，我们在编写页面样式的时候通常都要考虑选择器的优先级，使得页面的样式不会被覆盖或覆盖其他样式。<br>总体来说优先级是这样的（此处从高到底排序）：</p>
-<blockquote>
-<p>!important  -&gt;   行内样式style(此处包含写在html结构中的和用js动态加载上去的style)  -&gt;  id选择器  -&gt;  伪类  -&gt;  class选择器  -&gt;  元素选择器  -&gt;  通用选择器( * )</p>
-</blockquote>
-<p>这里我来对一些细节说明一下：<br>1.页面中能不要使用！important尽量避免使用，因为从严格意义上讲，！important与优先级是没有关系的，当使用!important定义模块的时候页面中再对其进行任何操作都无济于事了，改变了样式表本来的级联规则，难以调试。<br>2.行内样式这里的两方面距离说明：</p>
-<pre><code><span class="number">1</span>.&lt;<span class="tag">p</span> style=<span class="string">"color:red"</span> id=<span class="string">"test"</span>&gt;&lt;/p&gt;
-
-<span class="number">2</span>. document.<span class="function"><span class="title">getElementById</span><span class="params">(<span class="string">'topnav'</span>)</span></span><span class="class">.style</span><span class="class">.color</span> = <span class="string">'red'</span>
-</code></pre><p>3.关于伪类的优先级遵循：LVHA,从右向左优先级逐级增加.然而not作为伪类，却并不列入伪类优先级的评比中，也就是说当元素有重新定义的样式的时候not会被自动覆盖。举例说明：</p>
-<pre><code>&lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"test-not"</span>&gt;测试伪类<span class="keyword">not</span>&lt;/<span class="keyword">div</span>&gt;
-&lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"not"</span>&gt;<span class="number">123</span>&lt;/<span class="keyword">div</span>&gt;
-</code></pre><p>当定义样式为：</p>
-<pre><code><span class="rule"><span class="attribute">.test-not</span>:<span class="value"><span class="function">not</span>(.not){
-    color:red</span></span>;
-}
-</code></pre><p>效果如下图：<br><img src="/img/1.png" alt=""><br>123为黑色，说明样式中not生效了。<br>当定义样式为：</p>
-<pre><code><span class="class">.not</span><span class="rules">{
-    <span class="rule"><span class="attribute">color</span>:<span class="value">red</span></span>;
-}</span>
-<span class="rule"><span class="attribute">.test-not</span>:<span class="value"><span class="function">not</span>(.not){
-    color:red</span></span>;
-}
-</code></pre><p>效果如下图：<br><img src="/img/2.png" alt=""><br>123显示为红色，说明not样式被元素本身定义的样式覆盖了。<br>4.关于a标签的说明：</p>
-<pre><code>a:link{
-    <span class="built_in">color</span>:<span class="built_in">green</span>;
-}
-<span class="comment">/*a:visited{
-    color:yellow;
-}*/</span>
-.test{
-    <span class="built_in">color</span>:<span class="built_in">red</span>;
-}
-&lt;a href=<span class="string">"/"</span> class=<span class="string">"test-relative"</span>&gt;相对目录&lt;/a&gt;
-</code></pre><p>当我们把a标签加上link伪类的时候，link的优先级就高于class=”test”,所以在首次载入页面的时候文字会显示绿色，当我们点击链接后，发现文字又变回了红色，这是因为链接点击后的状态为visited，而在样式中我们将visited的样式定义注释掉了，所以链接样式就会直接显示class=”test”的样式了。<br>当我们将visited的样式定义去掉后，会发现颜色显示为黄色。</p>
+        <p>最近一直在学习HTTP相关知识，学到的知识总是要总结一下嘛，分几篇文章总结粗来~<br>这篇主要内容关于Web基础相关的，知识点都比较浅显易懂，恩，闲话就说到这里。<br>HTTP是因特网的传输媒介，是应用层协议，它把联网细节都交给了通用可靠的因特网传输协议：TCP/IP。大概的关系如图:<img src="/img/http2.png" alt="">当客户端与服务器沟通的时候就需要HTTP作为信使来传递消息，通常情况下，客户端会给服务器发送一条HTTP请求，请求需要的文档，服务器收到请求后经过处理就会给客户端做出一个响应，告诉客户端处理结果。当然这里我们说的客户端其实就是我们熟悉的浏览器。举个栗子🌰，当你在浏览器里输入<a href="http://imwineki.cn/index.html">http://imwineki.cn/index.html</a>,然后按下回车键后，简单来说，就会发生以下这一些列的事情，如图，<br><img src="/img/http1.png" alt="">浏览器就会向服务器www.imwineki.cn发送一条HTTP请求，此时服务器收到请求后，就会去寻找index.html的文档，找到了的话就会返回给浏览器文档信息。以及一个200的状态码，如果失败的话就会根据具体的错误情况返回具体的错误状态。<br>稍微复杂一点来说，当你按下回车后，http会解析URL的语法，通常包含：以下几种：<br><img src="/img/http3.png" alt="">，获取到<http:imwineki.cn index.html="">使用的是http协议，同过DNS查询主机，获取到该域名下对应的服务器的IP地址，以及端口号（默认情况下是80端口），获取到服务器的IP地址后，此时如果我土豪的买了CDN服务的话，接下来代理就会将请求发送给缓存（CDN），缓存根据文件副本的新鲜度来决定返回客户端数据还是向原始服务器发出请求,如果代理需要向服务器发请求，则CDN充当客户端的角色会向服务器发送请求（具体请求头部等这里先不介绍），当请求到达服务器后，则首先到达反向代理服务器，如果反向代理中包含文件副本则直接返回，否则反向代理再次向服务器或服务器集群转发请求，如图<img src="/img/http4.png" alt="">。当然我说的这些流程都是小型网站，至于大型网站架构，中间还要包含LVS负载均衡，虚拟IP等加速工具。这里需要说明的一点：反向代理和CDN都属于缓存，都是为了减少服务器压力，降低用户等待时间，加速网站相应的，所不同的是：CDN部署在网络提供商的机房，在用户发出请求后，可以优先从距离最近的网络提供商机房获取数据，但反向代理则是部署在中心机房，当请求到来时，会优先走反向代理。</http:imwineki.cn></p>
 
       
     </div>
@@ -242,18 +209,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/12/14/Thinkjs实现异步加载模板方法/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Thinkjs实现异步加载
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/11/25/Thinkjs链式结构总结/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Thinkjs链式结构总结</div>
+    <a href="/2015/12/14/Thinkjs实现异步加载模板方法/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Thinkjs实现异步加载</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -282,7 +240,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="css选择器优先级权重分析" data-title="css选择器优先级权重分析" data-url="http://imwineki.cn/2015/11/25/css选择器优先级权重分析/"></div>
+	<div class="ds-thread" data-thread-key="HTTP解读（一）" data-title="HTTP解读（一）" data-url="http://imwineki.cn/2016/01/25/HTTP解读（一）/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
