@@ -5,16 +5,18 @@
   
   <title>HTTP解读（二） | Wineki Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
+  <meta name="description" content="这篇文章我们来结合上一篇HTTP解读（一）唆唆HTTP中一些基本的概念，主要也是我想归纳一下一些基本的知识点。上篇中提到了客户端发送了一条请求后是经历了怎样的层层关卡才到达了服务器，我们这里就每一层的细节展开分析。HTTP报文是简单的格式化数据块，分为：请求报文和响应报文，由三部分组成：起始行（start line）  首部（header）  主体（body）报文包含：方法（method）请求UR">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTTP解读（二）">
 <meta property="og:url" content="http://imwineki.cn/2016/02/05/HTTP解读（二）/index.html">
 <meta property="og:site_name" content="Wineki Blog">
-<meta property="og:description">
-<meta property="og:updated_time" content="2016-02-05T03:07:42.000Z">
+<meta property="og:description" content="这篇文章我们来结合上一篇HTTP解读（一）唆唆HTTP中一些基本的概念，主要也是我想归纳一下一些基本的知识点。上篇中提到了客户端发送了一条请求后是经历了怎样的层层关卡才到达了服务器，我们这里就每一层的细节展开分析。HTTP报文是简单的格式化数据块，分为：请求报文和响应报文，由三部分组成：起始行（start line）  首部（header）  主体（body）报文包含：方法（method）请求UR">
+<meta property="og:image" content="http://imwineki.cn/img/http2-1.png">
+<meta property="og:image" content="http://imwineki.cn/img/http2-2.png">
+<meta property="og:updated_time" content="2016-02-05T11:23:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP解读（二）">
-<meta name="twitter:description">
+<meta name="twitter:description" content="这篇文章我们来结合上一篇HTTP解读（一）唆唆HTTP中一些基本的概念，主要也是我想归纳一下一些基本的知识点。上篇中提到了客户端发送了一条请求后是经历了怎样的层层关卡才到达了服务器，我们这里就每一层的细节展开分析。HTTP报文是简单的格式化数据块，分为：请求报文和响应报文，由三部分组成：起始行（start line）  首部（header）  主体（body）报文包含：方法（method）请求UR">
   
     <link rel="alternative" href="/atom.xml" title="Wineki Blog" type="application/atom+xml">
   
@@ -191,7 +193,105 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>这篇文章我们来结合上一篇<a href="http://imwineki.cn/2016/01/25/HTTP%E8%A7%A3%E8%AF%BB%EF%BC%88%E4%B8%80%EF%BC%89/">HTTP解读（一）</a>唆唆HTTP中一些基本的概念，主要也是我想归纳一下一些基本的知识点。<br>上篇中提到了客户端发送了一条请求后是经历了怎样的层层关卡才到达了服务器，我们这里就每一层的细节展开分析。<br>HTTP报文是简单的格式化数据块，分为：请求报文和响应报文，由三部分组成：起始行（start line）  首部（header）  主体（body）<br>报文包含：方法（method）请求URL（request-URL）版本（version）状态码（status-code）原因状态（reason-phrase）首部（header）实体的主体部分（entity-body）<br>一。起始行（所有HTTP报文都包含起始行）：包含请求行和响应行两部分<br>1.请求行</p>
+<ul>
+<li>请求报文的起始行说明要做什么，响应报文的起始行说明发生了什么。</li>
+<li>包含：一个方法+一个请求URL</li>
+<li>方法描述服务器应该执行的操作，请求URL描述对哪个资源执行这个方法</li>
+<li>请求行中包含HTTP版本，告诉服务器使用哪个HTTP方案</li>
+</ul>
+<p>2.响应行</p>
+<ul>
+<li>包含响应报文HTTP版本，数字状态码，描述操作状态的文本形式的原因短语</li>
+</ul>
+<p>3.方法<br>总体来说，客户端向服务器发送请求无外乎以下几种标准方法（注意这里只是说标准方法，包含不仅限于这几种，有的服务器还是实现了自己特有的HTTP的方法，称为扩展方法）：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">是否包含主体</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">GET</td>
+<td style="text-align:center">从服务器获取一份文档</td>
+<td style="text-align:center">否</td>
+</tr>
+<tr>
+<td style="text-align:center">HEAD</td>
+<td style="text-align:center">只从服务器获取响应报文的头部</td>
+<td style="text-align:center">否</td>
+</tr>
+<tr>
+<td style="text-align:center">POST</td>
+<td style="text-align:center">向服务器发送需要处理的数据</td>
+<td style="text-align:center">是</td>
+</tr>
+<tr>
+<td style="text-align:center">PUT</td>
+<td style="text-align:center">将请求的主体部分存储在服务器上</td>
+<td style="text-align:center">是</td>
+</tr>
+<tr>
+<td style="text-align:center">TRACE</td>
+<td style="text-align:center">对可能经过代理服务器传送到服务器上的报文进行追踪</td>
+<td style="text-align:center">否</td>
+</tr>
+<tr>
+<td style="text-align:center">OPTIONS</td>
+<td style="text-align:center">决定在服务器上可以执行哪些方法</td>
+<td style="text-align:center">否</td>
+</tr>
+<tr>
+<td style="text-align:center">DELETE</td>
+<td style="text-align:center">从服务器上删除一份文档</td>
+<td style="text-align:center">否</td>
+</tr>
+</tbody>
+</table>
+<p>4.状态码<br>方法是用来告诉服务器做什么事情，状态码是用来告诉客户端发生了什么事情，状体码分为以下几类：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">整体范围</th>
+<th style="text-align:center">已定义范围</th>
+<th style="text-align:center">分类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">100~199</td>
+<td style="text-align:center">100~101</td>
+<td style="text-align:center">信息提示</td>
+</tr>
+<tr>
+<td style="text-align:center">200~299</td>
+<td style="text-align:center">200~206</td>
+<td style="text-align:center">成功</td>
+</tr>
+<tr>
+<td style="text-align:center">300~399</td>
+<td style="text-align:center">300~305</td>
+<td style="text-align:center">重定向</td>
+</tr>
+<tr>
+<td style="text-align:center">400~499</td>
+<td style="text-align:center">400~415</td>
+<td style="text-align:center">客户端错误</td>
+</tr>
+<tr>
+<td style="text-align:center">500~599</td>
+<td style="text-align:center">500~505</td>
+<td style="text-align:center">服务器错误</td>
+</tr>
+</tbody>
+</table>
+<p>常见的状态码：<br>200 状态短语：OK 成功，401 状态短语：Unauthorized(未授权) 需要输入用户名和密码，404 状态短语：Not Found 未找到，502 状态短语：Bad Category 网关错误</p>
+<p>5.原因短语</p>
+<p>6.版本号<br>HTTP/x.y形式出现<br>二。首部：包含通用首部，请求首部，响应首部，实体首部，扩展首部<br>常见首部：如图<img src="/img/http2-1.png" alt=""><br>通用首部中还包含通用缓存首部，请求首部中包含Accept首部，条件请求首部，安全请求首部，代理请求首部。<br>响应首部中包含协商首部，安全响应首部。<br>实体首部中包含内容首部，实体缓存首部。<br>三。主体：HTTP报文实体主体部分是可选的<br>说了这么多是不是很不直观？没关系，来举个🌰就直观了。比如：我现在在浏览器地址栏中输入了：http:www.imwineki.cn/index.html，当我按下回车后的下一秒，浏览器就向服务器发送了一条get请求，请求的文档的当然就是index.html这个文件了，当然服务器会将文件找到后返回回来，酱紫你就能看到我的博客的主页了（通常相应的状态是200）。这张图就是我发送请求是的截图，我们来分析一下：<img src="/img/http2-2.png" alt=""><br>起始行信息：<br>Request Url跳转链接，Request Method请求方法为get方法，Remote status相应状态码200 ok，Remote Address请求IP地址（默认80端口）<br>首部：Request Header<br>    通用首部：Date:Fri, 05 Feb 2016 10:44:59 GMT<br>            Connection:keep-alive<br>            Via:1.1 varnish<br>    通用缓存首部：Cache-Control:max-age=600<br>    请求首部：Accept-Ranges:bytes<br>            Host:imwineki.cn<br>            User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.103 Safari/537.36<br>    响应首部：Server:GitHub.com<br>    实体首部：Content-Encoding:gzip<br>            Content-Length:4838<br>            Content-Type:text/html; charset=utf-8<br>差不多就这些了，写的好辛苦@……@！</p>
+
       
     </div>
     
