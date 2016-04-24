@@ -8,7 +8,7 @@
   <meta name="description">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Wineki Blog">
-<meta property="og:url" content="http://www.imwineki.cn/index.html">
+<meta property="og:url" content="http://imwineki.cn/index.html">
 <meta property="og:site_name" content="Wineki Blog">
 <meta property="og:description">
 <meta name="twitter:card" content="summary">
@@ -53,7 +53,7 @@
         <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.imwineki.cn"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://imwineki.cn"></form>
       </div>
     </div>
   </div>
@@ -249,7 +249,7 @@ drawArcPoint: <span class="keyword">function</span>(ctx,pointData){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.imwineki.cn/2016/04/19/基于canvas统计图实现/" data-id="cinefy87x0002yawg9nq1fwhj" class="article-share-link">Share</a>
+      <a data-url="http://imwineki.cn/2016/04/19/基于canvas统计图实现/" data-id="cinehjqfr00020bwgu19894yp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -281,7 +281,7 @@ drawArcPoint: <span class="keyword">function</span>(ctx,pointData){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这篇文章我们来结合上一篇<a href="http://imwineki.cn/2016/01/25/HTTP%E8%A7%A3%E8%AF%BB%EF%BC%88%E4%B8%80%EF%BC%89/" target="_blank" rel="external">HTTP解读（一）</a>唆唆HTTP中一些基本的概念，主要也是我想归纳一下一些基本的知识点。<br>上篇中提到了客户端发送了一条请求后是经历了怎样的层层关卡才到达了服务器，我们这里就每一层的细节展开分析。<br>HTTP报文是简单的格式化数据块，分为：请求报文和响应报文，由三部分组成：起始行（start line）  首部（header）  主体（body）<br>报文包含：方法（method）请求URL（request-URL）版本（version）状态码（status-code）原因状态（reason-phrase）首部（header）实体的主体部分（entity-body）<br>一。起始行（所有HTTP报文都包含起始行）：包含请求行和响应行两部分<br>1.请求行</p>
+        <p>这篇文章我们来结合上一篇<a href="http://imwineki.cn/2016/01/25/HTTP%E8%A7%A3%E8%AF%BB%EF%BC%88%E4%B8%80%EF%BC%89/">HTTP解读（一）</a>唆唆HTTP中一些基本的概念，主要也是我想归纳一下一些基本的知识点。<br>上篇中提到了客户端发送了一条请求后是经历了怎样的层层关卡才到达了服务器，我们这里就每一层的细节展开分析。<br>HTTP报文是简单的格式化数据块，分为：请求报文和响应报文，由三部分组成：起始行（start line）  首部（header）  主体（body）<br>报文包含：方法（method）请求URL（request-URL）版本（version）状态码（status-code）原因状态（reason-phrase）首部（header）实体的主体部分（entity-body）<br>一。起始行（所有HTTP报文都包含起始行）：包含请求行和响应行两部分<br>1.请求行</p>
 <ul>
 <li>请求报文的起始行说明要做什么，响应报文的起始行说明发生了什么。</li>
 <li>包含：一个方法+一个请求URL</li>
@@ -383,7 +383,7 @@ drawArcPoint: <span class="keyword">function</span>(ctx,pointData){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.imwineki.cn/2016/02/05/HTTP解读（二）/" data-id="cinefy88g0006yawgn62mopey" class="article-share-link">Share</a>
+      <a data-url="http://imwineki.cn/2016/02/05/HTTP解读（二）/" data-id="cinehjqgb00060bwgevlrgg5f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -415,12 +415,12 @@ drawArcPoint: <span class="keyword">function</span>(ctx,pointData){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近一直在学习HTTP相关知识，学到的知识总是要总结一下嘛，分几篇文章总结粗来~<br>这篇主要内容关于Web基础相关的，知识点都比较浅显易懂，恩，闲话就说到这里。<br>HTTP是因特网的传输媒介，是应用层协议，它把联网细节都交给了通用可靠的因特网传输协议：TCP/IP。大概的关系如图:<img src="/img/http2.png" alt="">当客户端与服务器沟通的时候就需要HTTP作为信使来传递消息，通常情况下，客户端会给服务器发送一条HTTP请求，请求需要的文档，服务器收到请求后经过处理就会给客户端做出一个响应，告诉客户端处理结果。当然这里我们说的客户端其实就是我们熟悉的浏览器。举个栗子🌰，当你在浏览器里输入<a href="http://imwineki.cn/index.html" target="_blank" rel="external">http://imwineki.cn/index.html</a>,然后按下回车键后，简单来说，就会发生以下这一些列的事情，如图，<br><img src="/img/http1.png" alt="">浏览器就会向服务器www.imwineki.cn发送一条HTTP请求，此时服务器收到请求后，就会去寻找index.html的文档，找到了的话就会返回给浏览器文档信息。以及一个200的状态码，如果失败的话就会根据具体的错误情况返回具体的错误状态。<br>稍微复杂一点来说，当你按下回车后，http会解析URL的语法，通常包含：以下几种：<br><img src="/img/http3.png" alt="">，获取到<http:imwineki.cn index.html="">使用的是http协议，同过DNS查询主机，获取到该域名下对应的服务器的IP地址，以及端口号（默认情况下是80端口），获取到服务器的IP地址后，此时如果我土豪的买了CDN服务的话，接下来代理就会将请求发送给缓存（CDN），缓存根据文件副本的新鲜度来决定返回客户端数据还是向原始服务器发出请求,如果代理需要向服务器发请求，则CDN充当客户端的角色会向服务器发送请求（具体请求头部等这里先不介绍），当请求到达服务器后，则首先到达反向代理服务器，如果反向代理中包含文件副本则直接返回，否则反向代理再次向服务器或服务器集群转发请求，如图<img src="/img/http4.png" alt="">。当然我说的这些流程都是小型网站，至于大型网站架构，中间还要包含LVS负载均衡，虚拟IP等加速工具。这里需要说明的一点：反向代理和CDN都属于缓存，都是为了减少服务器压力，降低用户等待时间，加速网站相应的，所不同的是：CDN部署在网络提供商的机房，在用户发出请求后，可以优先从距离最近的网络提供商机房获取数据，但反向代理则是部署在中心机房，当请求到来时，会优先走反向代理。</http:imwineki.cn></p>
+        <p>最近一直在学习HTTP相关知识，学到的知识总是要总结一下嘛，分几篇文章总结粗来~<br>这篇主要内容关于Web基础相关的，知识点都比较浅显易懂，恩，闲话就说到这里。<br>HTTP是因特网的传输媒介，是应用层协议，它把联网细节都交给了通用可靠的因特网传输协议：TCP/IP。大概的关系如图:<img src="/img/http2.png" alt="">当客户端与服务器沟通的时候就需要HTTP作为信使来传递消息，通常情况下，客户端会给服务器发送一条HTTP请求，请求需要的文档，服务器收到请求后经过处理就会给客户端做出一个响应，告诉客户端处理结果。当然这里我们说的客户端其实就是我们熟悉的浏览器。举个栗子🌰，当你在浏览器里输入<a href="http://imwineki.cn/index.html">http://imwineki.cn/index.html</a>,然后按下回车键后，简单来说，就会发生以下这一些列的事情，如图，<br><img src="/img/http1.png" alt="">浏览器就会向服务器www.imwineki.cn发送一条HTTP请求，此时服务器收到请求后，就会去寻找index.html的文档，找到了的话就会返回给浏览器文档信息。以及一个200的状态码，如果失败的话就会根据具体的错误情况返回具体的错误状态。<br>稍微复杂一点来说，当你按下回车后，http会解析URL的语法，通常包含：以下几种：<br><img src="/img/http3.png" alt="">，获取到<http:imwineki.cn index.html="">使用的是http协议，同过DNS查询主机，获取到该域名下对应的服务器的IP地址，以及端口号（默认情况下是80端口），获取到服务器的IP地址后，此时如果我土豪的买了CDN服务的话，接下来代理就会将请求发送给缓存（CDN），缓存根据文件副本的新鲜度来决定返回客户端数据还是向原始服务器发出请求,如果代理需要向服务器发请求，则CDN充当客户端的角色会向服务器发送请求（具体请求头部等这里先不介绍），当请求到达服务器后，则首先到达反向代理服务器，如果反向代理中包含文件副本则直接返回，否则反向代理再次向服务器或服务器集群转发请求，如图<img src="/img/http4.png" alt="">。当然我说的这些流程都是小型网站，至于大型网站架构，中间还要包含LVS负载均衡，虚拟IP等加速工具。这里需要说明的一点：反向代理和CDN都属于缓存，都是为了减少服务器压力，降低用户等待时间，加速网站相应的，所不同的是：CDN部署在网络提供商的机房，在用户发出请求后，可以优先从距离最近的网络提供商机房获取数据，但反向代理则是部署在中心机房，当请求到来时，会优先走反向代理。</http:imwineki.cn></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.imwineki.cn/2016/01/25/HTTP解读（一）/" data-id="cinefy88j0007yawgimwbhxdx" class="article-share-link">Share</a>
+      <a data-url="http://imwineki.cn/2016/01/25/HTTP解读（一）/" data-id="cinehjqge00070bwgwssd0wc7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP-web传输/">HTTP web传输</a></li></ul>
@@ -636,7 +636,7 @@ drawArcPoint: <span class="keyword">function</span>(ctx,pointData){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.imwineki.cn/2015/12/14/Thinkjs实现异步加载模板方法/" data-id="cinefy88c0005yawgd1rmfpyp" class="article-share-link">Share</a>
+      <a data-url="http://imwineki.cn/2015/12/14/Thinkjs实现异步加载模板方法/" data-id="cinehjqg600050bwg2lcas9sa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -706,7 +706,7 @@ drawArcPoint: <span class="keyword">function</span>(ctx,pointData){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.imwineki.cn/2015/11/25/css选择器优先级权重分析/" data-id="cinefy8850003yawgem3m14yb" class="article-share-link">Share</a>
+      <a data-url="http://imwineki.cn/2015/11/25/css选择器优先级权重分析/" data-id="cinehjqg000030bwgs7l7xbcg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -769,7 +769,7 @@ drawArcPoint: <span class="keyword">function</span>(ctx,pointData){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.imwineki.cn/2015/11/25/Thinkjs链式结构总结/" data-id="cinefy8880004yawglnul7g23" class="article-share-link">Share</a>
+      <a data-url="http://imwineki.cn/2015/11/25/Thinkjs链式结构总结/" data-id="cinehjqg300040bwgg5kmv4z5" class="article-share-link">Share</a>
       
       
     </footer>
