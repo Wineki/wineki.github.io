@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Thinkjs实现异步加载 | Wineki Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="今天来总结一下关于使用Thinkjs来实现页面异步加载的原理和做法。我从前端讲起，首先流程中包含一下几部分：
+
+
+
+View
+Controller
+Model
+
+
+
+
+筛选框（filter）用于筛选内容，位置在母模版
+母模版对应的Action
+调用数据库
+
+
+异步加载内容（content），位置在子模板
+ajax判断后的处理
+调用数据库
+
+
+
+下面根据代码具体解释一下：母模版的view层demo：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Thinkjs实现异步加载">
+<meta property="og:url" content="http://imwineki.cn/2015/12/14/Thinkjs实现异步加载模板方法/index.html">
+<meta property="og:site_name" content="Wineki Blog">
+<meta property="og:description" content="今天来总结一下关于使用Thinkjs来实现页面异步加载的原理和做法。我从前端讲起，首先流程中包含一下几部分：
+
+
+
+View
+Controller
+Model
+
+
+
+
+筛选框（filter）用于筛选内容，位置在母模版
+母模版对应的Action
+调用数据库
+
+
+异步加载内容（content），位置在子模板
+ajax判断后的处理
+调用数据库
+
+
+
+下面根据代码具体解释一下：母模版的view层demo：">
+<meta property="og:updated_time" content="2015-12-20T08:36:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Thinkjs实现异步加载">
+<meta name="twitter:description" content="今天来总结一下关于使用Thinkjs来实现页面异步加载的原理和做法。我从前端讲起，首先流程中包含一下几部分：
+
+
+
+View
+Controller
+Model
+
+
+
+
+筛选框（filter）用于筛选内容，位置在母模版
+母模版对应的Action
+调用数据库
+
+
+异步加载内容（content），位置在子模板
+ajax判断后的处理
+调用数据库
+
+
+
+下面根据代码具体解释一下：母模版的view层demo：">
+  
+    <link rel="alternative" href="/atom.xml" title="Wineki Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://p3.qhimg.com/d/inn/5bb54637/logo.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://p7.qhimg.com/d/inn/c0099c2d/Wineki.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Wineki</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="http://www.github.com/Wineki" title="github">github</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/HTTP-web传输/" style="font-size: 10px;">HTTP web传输</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">联系我：wuning_aiali@163.com</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Wineki</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://p7.qhimg.com/d/inn/c0099c2d/Wineki.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Wineki</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="http://www.github.com/Wineki" title="github">github</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Thinkjs实现异步加载模板方法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/14/Thinkjs实现异步加载模板方法/" class="article-date">
+  	<time datetime="2015-12-14T09:23:10.000Z" itemprop="datePublished">2015-12-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Thinkjs实现异步加载
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天来总结一下关于使用Thinkjs来实现页面异步加载的原理和做法。<br>我从前端讲起，首先流程中包含一下几部分：</p>
+<table>
+<thead>
+<tr>
+<th>View</th>
+<th style="text-align:center">Controller</th>
+<th style="text-align:right">Model</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>筛选框（filter）用于筛选内容，位置在母模版</td>
+<td style="text-align:center">母模版对应的Action</td>
+<td style="text-align:right">调用数据库</td>
+</tr>
+<tr>
+<td>异步加载内容（content），位置在子模板</td>
+<td style="text-align:center">ajax判断后的处理</td>
+<td style="text-align:right">调用数据库</td>
+</tr>
+</tbody>
+</table>
+<p>下面根据代码具体解释一下：<br>母模版的view层demo：</p>
+<pre><code><span class="xml">/*这里是一个filter*/
+<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"filter"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">dl</span> <span class="attribute">class</span>=<span class="value">"row"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">dt</span>&gt;</span>大小<span class="tag">&lt;/<span class="title">dt</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">dd</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span>全部<span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span>大<span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span>中<span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span>小<span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+        <span class="tag">&lt;/<span class="title">dd</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">dl</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+/*这里是一个content*/
+<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"content"</span>&gt;</span>
+    </span>&lt;%<span class="ruby"><span class="keyword">include</span> ajax/tplselectajax.html</span>%&gt;<span class="xml">     /*这里include进来一个子模板，将来异步刷新时就只刷新子模板数据*/
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span>
+</code></pre><p>子模板的view层demo:<br>    可以看到从后端传来一个tpllist的数据字段，相当于是一个数组，我们把它循环输出出来，同时一会异步刷新的时候我们也只是刷新这个子模板的数据，而不会改变上面的母模板的数据。</p>
+<pre><code><span class="xml"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"cont-wrap"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">ul</span>&gt;</span>
+        </span><span class="vbscript">&lt;%tpllist.forEach(<span class="keyword">function</span>(item){ %&gt;</span><span class="xml">
+            <span class="tag">&lt;<span class="title">li</span>&gt;</span>
+                <span class="tag">&lt;<span class="title">p</span>&gt;</span></span><span class="vbscript">&lt;%=item.desc%&gt;</span><span class="xml"><span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+                <span class="tag">&lt;<span class="title">p</span>&gt;</span></span><span class="vbscript">&lt;%=item.name%&gt;</span><span class="xml"><span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+            <span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+        </span><span class="vbscript">&lt;%})%&gt;</span><span class="xml">
+    <span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span>
+</code></pre><p>当然这里需要js来帮忙使用ajax来进行一步调用:</p>
+<pre><code>$(<span class="string">'a'</span>).on(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>{
+    e.preventDefault();
+    $.ajax({
+        url:<span class="string">''</span>,<span class="comment">/*填写请求路径*/</span>
+        dataTpe:<span class="string">'jsonp'</span>,
+        data:<span class="string">''</span>,<span class="comment">/*传送的数据*/</span>
+        success:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+
+        },
+        fail:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+
+        }
+
+    });
+});
+</code></pre><p>Controller层的处理:</p>
+<pre><code>tplselectAction: <span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+    <span class="keyword">var</span> <span class="keyword">self</span> = this;
+    <span class="comment">/*获取get请求的参数，在这个demo中其实就是筛选条件*/</span>
+    <span class="keyword">var</span> data = this.get();  
+    <span class="keyword">var</span> pg = data.pg;
+    <span class="comment">/*判断时候是ajax请求，如果是则结果返回true*/</span>
+    <span class="keyword">var</span> isAjax = <span class="keyword">self</span>.isAjax();   
+    <span class="comment">/*子模板渲染路径，注意此处根目录是Home*/</span>
+    <span class="keyword">var</span> tpl = <span class="string">'Home/ajax/build_tplselectajax.html'</span>;         
+    <span class="keyword">if</span>(!isAjax){
+        <span class="comment">/*如果不是ajax请求，也就是浏览器首次渲染数据时，默认选择展示全部数据*/</span>
+        data = { cateId: <span class="string">'全部'</span>}
+    }
+    <span class="comment">/*调用数据库获取数据，调用ajaxdata方法*/</span>
+    D(<span class="string">'Template'</span>).ajaxdata(data,pg).then(<span class="function"><span class="keyword">function</span><span class="params">(data)</span></span>{
+        <span class="keyword">var</span> <span class="keyword">list</span> = shiftObject(data,<span class="string">'data'</span>);  <span class="comment">/*将数据库data字段整体存入list*/</span>
+        <span class="keyword">self</span>.assign(<span class="string">'tpllist'</span>,<span class="keyword">list</span>);  
+        <span class="keyword">self</span>.assign(<span class="string">'isAjax'</span>,isAjax);
+        <span class="keyword">if</span>(isAjax){
+            <span class="comment">/*如果是ajax模板，则利用fetch这个方法对模板进行重新渲染，并返回相应json格式的状态值*/</span>
+            <span class="keyword">if</span>(<span class="keyword">list</span>.length !== <span class="number">0</span>){
+                <span class="keyword">self</span>.fetch(tpl).then(<span class="function"><span class="keyword">function</span><span class="params">(content)</span></span>{
+                   <span class="keyword">self</span>.jsonp({status:<span class="string">"success"</span>,cont:content});
+                });
+            }<span class="keyword">else</span>{
+                <span class="keyword">self</span>.jsonp({status:<span class="string">"fail"</span>,cont:<span class="string">'暂时木有相应的模板，搜搜别的试试吧！'</span>});
+            }
+        }<span class="keyword">else</span>{
+            <span class="comment">/*首次加载页面则直接展示*/</span>
+            <span class="keyword">self</span>.display();
+        }
+    });
+}
+</code></pre><p>Model层的处理demo：</p>
+<pre><code>ajaxdata: function(<span class="built_in">data</span>){
+    <span class="built_in">var</span> <span class="built_in">self</span> = this;
+    <span class="keyword">if</span>(<span class="built_in">data</span><span class="built_in">.</span>cateId = <span class="string">'全部'</span>){
+        <span class="keyword">return</span> <span class="built_in">self</span><span class="built_in">.</span><span class="keyword">order</span>({<span class="string">'id'</span>:<span class="string">'desc'</span>})<span class="built_in">.</span><span class="keyword">select</span>()<span class="built_in">.</span>then(function(<span class="built_in">data</span>){
+            <span class="keyword">return</span> <span class="built_in">data</span>;
+        });
+    }<span class="keyword">else</span>{
+        <span class="keyword">return</span> <span class="built_in">self</span><span class="built_in">.</span><span class="keyword">where</span>({<span class="string">'title'</span>:<span class="built_in">data</span><span class="built_in">.</span>cateId})<span class="built_in">.</span><span class="keyword">order</span>({<span class="string">'id'</span>:<span class="string">'desc'</span>})<span class="built_in">.</span><span class="keyword">select</span>()<span class="built_in">.</span>then(function(<span class="built_in">data</span>){
+            <span class="keyword">return</span> <span class="built_in">data</span>;    
+        });
+    }
+}
+</code></pre><p>Model层的处理：<br>这里是项目源代码的查询:</p>
+<pre><code>ajaxdata: <span class="function"><span class="keyword">function</span><span class="params">(data,pg)</span></span>{
+        var self = this;
+        var <span class="keyword">where</span> = <span class="keyword">where</span> || {};
+        /*此处包含其他参数的复合查询，展示出来，在demo中暂时不考虑*/
+        /*var join = {
+            templatecate: {
+                join: <span class="string">'left'</span>,
+                as: <span class="string">'c'</span>,
+                on: [<span class="string">'cateId'</span>,<span class="string">'id'</span>]
+            }
+        };
+        var pg = pg || (isNumber(<span class="keyword">where</span>) ? <span class="keyword">where</span> : null);
+        var lastCond = {};
+        <span class="keyword">if</span>(<span class="comment">!isEmpty(where)){</span>
+            for(var i <span class="type">in</span> <span class="keyword">where</span>){
+                var find = false;
+                for(var s <span class="type">in</span> fields){
+                    <span class="keyword">if</span>(fields[s].indexOf(i) &gt; -<span class="number">1</span>){
+                        lastCond[s + <span class="string">'.'</span> + i] = <span class="keyword">where</span>[i];
+                        find = true;
+                        break;
+                    }
+                }
+                <span class="keyword">if</span>(find)<span class="keyword">continue</span>;
+                lastCond[<span class="string">'t.'</span> + i] = <span class="keyword">where</span>[i];
+            }
+        }*/
+        <span class="keyword">if</span>(<span class="type">data</span>.cateId == <span class="string">'全部'</span>){
+            var per = C(<span class="string">'db_nums_per_page'</span>);
+            /*在筛选框为‘全部’时，将数据中全部数据按条件查询出来，并且进行分页查询（分页查询此处我们暂时不讨论）*/
+            <span class="keyword">return</span> self.<span class="keyword">where</span>({<span class="string">'endType'</span>:<span class="type">data</span>.<span class="keyword">endType</span>,<span class="string">'isForbidden'</span>:<span class="number">0</span>}).order({<span class="string">'id'</span>: <span class="string">'desc'</span>}).page(pg).<span class="keyword">select</span>().<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span><span class="params">(data)</span></span>{
+                    <span class="keyword">return</span> <span class="type">data</span>;
+            }).<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span><span class="params">(datalist)</span></span>{
+                /*将返回结果进行处理，并返回相应的参数*/
+                <span class="keyword">return</span> self.field(<span class="string">'count(id) as count'</span>).<span class="keyword">where</span>({<span class="string">'endType'</span>:<span class="type">data</span>.<span class="keyword">endType</span>}).find().<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span><span class="params">(res)</span></span>{
+                    <span class="keyword">return</span> {
+                        <span class="type">data</span>: datalist,
+                        <span class="built_in">count</span>: res.<span class="built_in">count</span>,
+                        page: pg || <span class="number">1</span>,
+                        num: per,
+                        total: Math.ceil(res.<span class="built_in">count</span> / per)
+                    };
+                });
+            }); 
+        }<span class="keyword">else</span>{
+            /ajax请求是查询结果，按照cateId的值进行查询/
+            var per = C(<span class="string">'db_nums_per_page'</span>);
+            <span class="keyword">return</span> self.alias(<span class="string">'t'</span>).field(<span class="string">'t.*'</span>).join(join).<span class="keyword">where</span>({<span class="string">'c.title'</span>:<span class="type">data</span>.cateId,<span class="string">'t.endType'</span>:<span class="type">data</span>.<span class="keyword">endType</span>,<span class="string">'isForbidden'</span>:<span class="number">0</span>}).order({<span class="string">'t.id'</span>: <span class="string">'desc'</span>}).page(pg).<span class="keyword">select</span>().<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span><span class="params">(data)</span></span>{
+                    <span class="keyword">return</span> <span class="type">data</span>;
+            }).<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span><span class="params">(datalist)</span></span>{
+                <span class="keyword">return</span> self.alias(<span class="string">'t'</span>).field(<span class="string">'count(t.id) as count'</span>).join(join).<span class="keyword">where</span>({<span class="string">'c.title'</span>:<span class="type">data</span>.cateId,<span class="string">'t.endType'</span>:<span class="type">data</span>.<span class="keyword">endType</span>}).find().<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span><span class="params">(res)</span></span>{
+                    <span class="keyword">return</span> {
+                        <span class="type">data</span>: datalist,
+                        <span class="built_in">count</span>: res.<span class="built_in">count</span>,
+                        page: pg || <span class="number">1</span>,
+                        num: per,
+                        total: Math.ceil(res.<span class="built_in">count</span> / per)
+                    };
+                });
+            }); 
+        }
+
+    }
+</code></pre><p>关于Thinkjs里面的具体语法我就不一一解释了，这里主要来讲一下大概的思路，首先前端需要在模板中将需要异步加载的模板进行include,方便后续的异步刷洗页面，同时你需要用js来进行一个ajax的通信，接着就是Controller层对模板的渲染，在拿到前端传来的请求数据后，调用model层的方法从数据库中取出数据，此时需要使用feteh这个方法重新渲染页面。（其实也可以使用display(渲染模板路径)这个方法，只是渲染的方式不用而已，结果是一样的）感兴趣的同学可以搜一下API。<br>sql语句写的不好，还望大家见谅~~哈哈哈，先就这么多~</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/01/25/HTTP解读（一）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          HTTP解读（一）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/11/25/css选择器优先级权重分析/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">css选择器优先级权重分析</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Thinkjs实现异步加载模板方法" data-title="Thinkjs实现异步加载" data-url="http://imwineki.cn/2015/12/14/Thinkjs实现异步加载模板方法/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Wineki
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

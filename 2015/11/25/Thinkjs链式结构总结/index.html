@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Thinkjs链式结构总结 | Wineki Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="第一篇博文，由于刚开始学习markdown的方式写博文，速度好慢。最近在用Thinkjs写项目，又向从前端到全段的梦想迈进了一步，哈哈，写话少说，share一些干货粗来。Thinkjs是基于nodejs的web框架，具体的文档可以参看https://thinkjs.org/官方文档，我使用的是1.0版本，所以暂时只讨论1.0的一些情况。今天写项目中遇到这样一个问题：我从session中获取到用户的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Thinkjs链式结构总结">
+<meta property="og:url" content="http://imwineki.cn/2015/11/25/Thinkjs链式结构总结/index.html">
+<meta property="og:site_name" content="Wineki Blog">
+<meta property="og:description" content="第一篇博文，由于刚开始学习markdown的方式写博文，速度好慢。最近在用Thinkjs写项目，又向从前端到全段的梦想迈进了一步，哈哈，写话少说，share一些干货粗来。Thinkjs是基于nodejs的web框架，具体的文档可以参看https://thinkjs.org/官方文档，我使用的是1.0版本，所以暂时只讨论1.0的一些情况。今天写项目中遇到这样一个问题：我从session中获取到用户的">
+<meta property="og:image" content="http://p6.qhimg.com/d/inn/f451a883/code.png">
+<meta property="og:updated_time" content="2015-11-25T15:18:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Thinkjs链式结构总结">
+<meta name="twitter:description" content="第一篇博文，由于刚开始学习markdown的方式写博文，速度好慢。最近在用Thinkjs写项目，又向从前端到全段的梦想迈进了一步，哈哈，写话少说，share一些干货粗来。Thinkjs是基于nodejs的web框架，具体的文档可以参看https://thinkjs.org/官方文档，我使用的是1.0版本，所以暂时只讨论1.0的一些情况。今天写项目中遇到这样一个问题：我从session中获取到用户的">
+  
+    <link rel="alternative" href="/atom.xml" title="Wineki Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://p3.qhimg.com/d/inn/5bb54637/logo.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://p7.qhimg.com/d/inn/c0099c2d/Wineki.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Wineki</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="http://www.github.com/Wineki" title="github">github</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/HTTP-web传输/" style="font-size: 10px;">HTTP web传输</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">联系我：wuning_aiali@163.com</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Wineki</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://p7.qhimg.com/d/inn/c0099c2d/Wineki.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Wineki</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="http://www.github.com/Wineki" title="github">github</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Thinkjs链式结构总结" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/25/Thinkjs链式结构总结/" class="article-date">
+  	<time datetime="2015-11-25T15:12:59.000Z" itemprop="datePublished">2015-11-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Thinkjs链式结构总结
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>第一篇博文，由于刚开始学习markdown的方式写博文，速度好慢。<br><br>最近在用<em>Thinkjs</em>写项目，又向从前端到全段的梦想迈进了一步，哈哈，写话少说，share一些干货粗来。<br><br><em>Thinkjs</em>是基于nodejs的web框架，具体的文档可以参看<a href="https://thinkjs.org/" target="_blank" rel="external">https://thinkjs.org/</a>官方文档，我使用的是1.0版本，所以暂时只讨论1.0的一些情况。<br>今天写项目中遇到这样一个问题：<br>我从session中获取到用户的信息，然后获取存在session中的userName，使用：</p>
+<pre><code><span class="keyword">this</span>.session(<span class="string">"userInfo"</span>).then(<span class="function"><span class="keyword">function</span><span class="params">(data)</span></span>{
+...
+});
+</code></pre><p>的方式，另一方面我通过数据库查询获取到用户在数据库中存储的userName,然后比较这两个userName时候否相同，使用</p>
+<pre><code><span class="tag">D</span>(<span class="string">'User'</span>)<span class="class">.get</span>(id)<span class="class">.then</span>(<span class="function">function</span>(data){
+...
+}); 
+</code></pre><p>再将一个标签值assign到view层对应的页面。<br>然而就在编写的过程中我发现我在比较之后，无法将标签值传入页面。<br>具体代码如图：<br><img src="http://p6.qhimg.com/d/inn/f451a883/code.png" alt="1"><br>这是一份伪代码，上面的图片的大概意思就是这样的：</p>
+<pre><code><span class="keyword">return</span> D(<span class="string">'User'</span>).get(id).then(<span class="function"><span class="keyword">function</span><span class="params">(data)</span></span>{
+    <span class="keyword">return</span> <span class="keyword">self</span>.session(<span class="string">'user'</span>).then(<span class="function"><span class="keyword">function</span><span class="params">(user)</span></span>{
+        <span class="comment">//验证session信息,返回editable</span>
+        <span class="keyword">self</span>.assign(<span class="string">'editable'</span>,editable);
+        <span class="keyword">self</span>.assign(<span class="string">'user'</span>,data);
+        <span class="keyword">self</span>.display();
+    });
+});
+</code></pre><p>最初我是这么写的：</p>
+<pre><code><span class="keyword">return</span> D(<span class="string">'User'</span>).get(id).then(<span class="function"><span class="keyword">function</span><span class="params">(data)</span></span>{
+    <span class="keyword">var</span> session = <span class="keyword">self</span>.session(<span class="string">'user'</span>).then(<span class="function"><span class="keyword">function</span><span class="params">(user)</span></span>{
+        <span class="comment">//验证session信息,返回editable</span>
+        <span class="keyword">self</span>.assign(<span class="string">'editable'</span>,editable);
+    });
+    <span class="keyword">self</span>.assign(<span class="string">'user'</span>,data);
+    <span class="keyword">self</span>.display();
+});
+</code></pre><p>然后我发现这个根本没有想下执行，页面直接白屏了，原因其实是这样的，在<em>thinkjs</em>中绝大多数方法都是异步调用的，并且包装成promise，而promise是通过<br><em>try{}catch{}</em>进行异常捕获的，很显然我没有catch异常所以导致直接白屏，同时由于thinkjs中许多的调用都是异步调用（这个之前说过），也就是说在session还没有返回值的时候程序就向下执行了，但是此处我必须要它同步来执行，也就是说按照程序写的先后顺序来执行，所以就采用return的方法，将没有个异步方法串联起来，形成一个调用链就搞定了。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/11/25/css选择器优先级权重分析/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          css选择器优先级权重分析
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Thinkjs链式结构总结" data-title="Thinkjs链式结构总结" data-url="http://imwineki.cn/2015/11/25/Thinkjs链式结构总结/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Wineki
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
