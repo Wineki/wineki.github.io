@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客索引 - Wineki</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .category-toggle {
+            cursor: pointer;
+            position: relative;
+            padding-right: 30px;
+        }
+        .category-toggle::after {
+            content: "−";
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+        }
+        .category-toggle.collapsed::after {
+            content: "+";
+        }
+        .category-content {
+            overflow: hidden;
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+            max-height: 0;
+            opacity: 0;
+        }
+        .category-content.expanded {
+            max-height: 1000px;
+            opacity: 1;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+        }
+        .blog-index {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .category {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .category h2 {
+            color: #3498db;
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+            font-weight: bold;
+        }
+        .category ul {
+            padding-left: 20px;
+        }
+        .category li {
+            margin: 12px 0;
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .category li:last-child {
+            border-bottom: none;
+        }
+        .category a {
+            color: #2c3e50;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .category a:hover {
+            color: #3498db;
+        }
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            .blog-index {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>博客分类索引</h1>
+    </header>
+    
+    <main class="blog-index">
+        <section class="category">
+            <h2 class="category-toggle">AI工程</h2>
+            <div class="category-content">
+                <ul>
+                    
+
+
+
+
+
+<li><a href="../PPT/AI/专利产品-语言模型.png" target="_blank" rel="noopener noreferrer">专利产品-语言模型</a></li>
+<li><a href="../PPT/AI/从实现原理的角度看AI.pdf" target="_blank" rel="noopener noreferrer">从实现原理的角度看AI</a></li>
+
+
+
+
+
+
+                </ul>
+            </div>
+        </section>
+        
+        <section class="category">
+            <h2 class="category-toggle">Web3工程</h2>
+            <div class="category-content">
+                <ul>
+                
+
+
+
+
+
+</ul>
+            </div>
+        </section>
+
+        <section class="category">
+            <h2 class="category-toggle">前端工程</h2>
+            <div class="category-content">
+                <ul>
+                    
+
+
+<li><a href="../PPT/FrontEnd/基于微服务架构的后台管理系统提效体系综述.pdf" target="_blank" rel="noopener noreferrer">基于微服务架构的后台管理系统提效体系综述</a></li>
+<li><a href="../PPT/FrontEnd/过往总结.pdf" target="_blank" rel="noopener noreferrer">过往总结</a></li>
+
+
+
+
+                </ul>
+            </div>
+        </section>
+        
+        <section class="category">
+            <h2 class="category-toggle">知行合一周报</h2>
+            <div class="category-content">
+                <ul>
+                    
+
+
+<li><a href="../PPT/InvestMent/20250528.pdf" target="_blank" rel="noopener noreferrer">20250528</a></li>
+<li><a href="../PPT/InvestMent/20250606.pdf" target="_blank" rel="noopener noreferrer">20250606</a></li>
+
+
+
+                </ul>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>© 2025 Wineki. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggles = document.querySelectorAll('.category-toggle');
+            toggles.forEach(toggle => {
+                // 初始状态为折叠
+                toggle.classList.add('collapsed');
+                const content = toggle.nextElementSibling;
+                content.classList.remove('expanded');
+                
+                toggle.addEventListener('click', function() {
+                    this.classList.toggle('collapsed');
+                    content.classList.toggle('expanded');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
