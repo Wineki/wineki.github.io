@@ -71,7 +71,7 @@ function updateIndexHtml(dir) {
     const sampleHtml = html.includes(categoryName) 
         ? html.substring(html.indexOf(categoryName)-50, html.indexOf(categoryName)+200)
         : '未找到匹配的分类名称';
-    console.log('HTML片段:', sampleHtml);
+    // console.log('HTML片段:', sampleHtml);
     
     // 测试正则表达式
     const match = html.match(regex);
