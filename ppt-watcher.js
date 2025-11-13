@@ -6,7 +6,7 @@ const WATCH_DIRS = {
     'AI': 'AI工程',
     'Web3': 'Web3工程', 
     'FrontEnd': '前端工程',
-    'InvestMent': '知行合一周报'
+    'InvestMent': '人生刻度'
 };
 
 // 需要监控的PPT子目录
