@@ -100,6 +100,50 @@
             margin-top: 8px;
             color: var(--text-tertiary);
         }
+
+        /* Mobile Responsive */
+        @media screen and (max-width: 768px) {
+            .header h1 {
+                font-size: 18px;
+            }
+            .tabs {
+                overflow-x: auto;
+                justify-content: flex-start;
+                -webkit-overflow-scrolling: touch;
+            }
+            .tabs::-webkit-scrollbar {
+                display: none;
+            }
+            .tab {
+                padding: 12px 16px;
+                font-size: 14px;
+                white-space: nowrap;
+            }
+            .content {
+                padding: 16px;
+            }
+            .markdown-body {
+                padding: 16px;
+                border-radius: var(--radius-md);
+            }
+            .markdown-body table {
+                display: block;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            .markdown-body th, .markdown-body td {
+                padding: 6px 8px;
+                font-size: 13px;
+            }
+            .footer {
+                padding: 16px;
+                font-size: 12px;
+            }
+            .friend-links a {
+                display: inline-block;
+                margin: 4px 8px 4px 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1657,7 +1701,7 @@ CSP 客户（超大规模云厂商）自研 ASIC 趋势加速：Google TPU、AWS
         </div>
     </div>
     <div class="footer">
-        最后更新: 2026-06-14 14:44
+        最后更新: 2026-06-14 14:50
         <div class="friend-links">
             友链: <a href="https://brief.day1global.xyz/" target="_blank">每日简报</a> | <a href="https://klalaklilicheng.github.io/firstlight/#ipo" target="_blank">First Light</a>
         </div>
